@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>	 
+<title></title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.3/css/bootstrap-select.min.css" />
+
+<!--CSS Files-->
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.6.4/css/buttons.dataTables.min.css">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" >
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.3/js/bootstrap-select.min.js"></script>
+
+
+<style>
+    
+.sidebar-sticky {
+  height: 94%; 
+  width: 260px; 
+  z-index: 1; 
+  background-color:#14141f;
+  position: fixed;
+  overflow: scroll;
+  margin-top: -20px;
+  }
+
+  
+  .image{
+    width: 45%; height: 20%;
+    margin-top: 40px;
+    margin-left: 30px;
+    margin: auto;
+    display: block;
+    font: 1em sans-serif;
+  }
+  
+  
+  .left-content{
+  margin-left: 265px;
+  margin-right: 10px;
+  }
+
+  .custom-form-control {
+        background-color:#e6e6ff;
+    }
+    
+    .navbar{
+        background-color:#14141f;
+        margin-top: 0px;
+        border-color: #e6e6ff;
+        size: 2px;
+    }
+
+
+
+    
+
+    
+</style>
+
+</head>
+<body style="background-color: #14141f;">
+    <nav class="navbar navbar-expand-lg">
+        <ul class="navbar-nav ml-auto" style="margin-left: 250px; margin-right: 20px;">
+            <li class="nav-item" style="margin-left: 10px;">
+              <a class="nav-link" href="{% url 'home' %}" style="font-size:medium; color: #198754;"><b>Home</b></a>
+            </li>
+            <li class="nav-item" style="margin-left: 20px;">
+              <a class="nav-link" href="#!" style="font-size:medium; color: #198754;"><b>About</b></a>
+            </li>
+            <li class="nav-item" style="margin-left: 20px;">
+              <a class="nav-link" href="#!" style="font-size:medium; color: #198754;"><b>Contact</b></a>
+            </li>
+            <li class="nav-item" style="margin-left: 20px;">
+              <i class="fa-solid fa-chart-mixed fa-lg"></i>
+              <a class="nav-link" href="#!" style="font-size:medium; color: #198754;"><b>Dashboard</b></a>
+            </li>
+          </ul> 
+          <ul class="navbar-nav ms-auto">
+             <li class="nav-item">
+              <a class="nav-link" href="{% url 'logout_user'%}" style="font-size:medium; color: #198754;"><b>Logout</b></a>
+            </li>
+          </ul>
+
+          
+    </nav>
+    
+    <div class="sidebar-sticky">
+        <br>
+        <img class="image" src="{% static 'img/avator.png' %}">
+        <br>
+
+
+      
+      
+
+        <hr style="color:yellowgreen; height: 2px;"><h3 style="text-align: center; color:white;"><b style="color: aliceblue;">FORM</b></h3><hr style="color:yellowgreen; height: 2px;"><br>
+        {% if request.user.is_customer_form or request.user.is_all or request.user.is_form %}
+        <a class="btn btn-success" style="border-radius: 5px; margin-left: 40px; width: 65%; height: 6%; font-size:small;" href="{% url 'customer' %}">CUSTOMER FORM</a><br><br>
+        {% endif %}
+        {% if request.user.is_worksheet_form or request.user.is_all or request.user.is_form %}
+        <a class="btn btn-success" style="border-radius: 5px; margin-left: 40px; width: 65%; height: 6%; font-size: small;" href="{% url 'worksheet' %}">WORKSHEET FORM</a><br><br>
+        {% endif %}
+        {% if request.user.is_renewal_form or request.user.is_all or request.user.is_form %}
+        <a class="btn btn-success" style="border-radius: 5px; margin-left: 40px; width: 65%; height: 6%; font-size: small;" href="{% url 'renewals' %}">RENEWAL FORM</a><br><br>
+        {% endif %}
+        {% if request.user.is_credential_form or request.user.is_all or request.user.is_form %}
+        <a class="btn btn-success" style="border-radius: 5px; margin-left: 40px; width: 65%; height: 6%; font-size: small;" href="{% url 'credentials' %}">CREDENTIAL FORM</a><br><br>
+        {% endif %}
+        <br>
+
+    
+
+
+
+
+
+        <hr style="color: yellowgreen; height: 2px;"><h3 style="text-align: center; color:white;"><b style="color: aliceblue;">REPORT</b></h3><hr style="color:yellowgreen; height: 2px;"><br>        
+        {% if request.user.is_customer_report or request.user.is_all or request.user.is_report %}
+        <a class="btn btn-info" style="border-radius: 5px; margin-left: 40px; width: 65%; height: 6%; font-size: small;" href="{% url 'getcustomer' %}">CUSTOMER REPORT</a><br><br>
+        {% endif %}
+        {% if request.user.is_worksheet_report or request.user.is_all or request.user.is_report %}
+        <a class="btn btn-info" style="border-radius: 5px; margin-left: 40px; width: 65%; height: 6%; font-size: small;" href="{% url 'getworksheet' %}">WORKSHEET REPORT</a><br><br>
+        {% endif %}
+        {% if request.user.is_renewal_report or request.user.is_all or request.user.is_report %}
+        <a class="btn btn-info" style="border-radius: 5px; margin-left: 40px; width: 65%; height: 6%; font-size: small;" href="{% url 'getrenewal' %}">RENEWAL REPORT</a><br><br>
+        {% endif %}
+        {% if request.user.is_credential_report or request.user.is_all or request.user.is_report %}
+        <a class="btn btn-info" style="border-radius: 5px; margin-left: 40px; width: 65%; height: 6%; font-size: small;" href="{% url 'getcredentials' %}">CREDENTIAL REPORT</a><br><br>
+        {% endif %}
+        <br>
+
+
+
+        
+        <hr style="color:yellowgreen; height: 2px;"><h3 style="text-align: center; color:white;"><b style="color: aliceblue;">UPDATE RECORD</b></h3><hr style="color:yellowgreen; height: 2px;"><br>
+        {% if request.user.is_customer_update or request.user.is_all or request.user.is_update %}
+        <a class="btn btn-warning" style="border-radius: 5px; margin-left: 40px; width: 65%; height: 6%; font-size: small;" href="{% url 'customeredit' %}">CUSTOMER UPDATE</a><br><br>
+        {% endif %}
+        {% if request.user.is_worksheet_update or request.user.is_all or request.user.is_update %}
+        <a class="btn btn-warning" style="border-radius: 5px; margin-left: 40px; width: 65%; height: 6%; font-size: small;" href="{% url 'worksheetedit' %}">WORKSHEET UPDATE</a><br><br>
+        {% endif %}
+        {% if request.user.is_renewal_update or request.user.is_all or request.user.is_update %}
+        <a class="btn btn-warning" style="border-radius: 5px; margin-left: 40px; width: 65%; height: 6%; font-size: small;" href="{% url 'renewaledit' %}" >RENEWAL UPDATE</a><br><br>
+        {% endif %}
+        {% if request.user.is_credential_update or request.user.is_all or request.user.is_update %}
+        <a class="btn btn-warning" style="border-radius: 5px; margin-left: 40px; width: 65%; height: 6%; font-size: small;" href="{% url 'credentialedit' %}">CREDENTIAL UPDATE</a><br><br>
+        {% endif %}
+
+      
+
+
+
+        <br>
+        <br>
+    </div>
+
+    <div class="left-content">
+        {% if status == 'there_is_profile' %}
+        {% include 'crm/customer_form.html' %}
+
+        {% elif status == 'work' %}
+        {% include 'crm/worksheet_form.html' %}
+        
+        {% elif status == 'cred' %}
+        {% include 'crm/credentials_form.html' %}
+
+        {% elif status == 'renewal' %}
+        {% include 'crm/renewal_form.html' %}
+
+        {% elif status == 'creport' %}
+        {% include 'crm/customer_report.html' %}
+
+        {% elif status == 'wreport' %}
+        {% include 'crm/worksheet_report.html' %}
+
+        {% elif status == 'rreport' %}
+        {% include 'crm/renewal_report.html' %}
+
+        {% elif status == 'ccreport' %}
+        {% include 'crm/credentials_report.html' %}
+
+        {% elif status == 'customeredit' %}
+        {% include 'crm/customer_edit.html' %}
+
+        {% elif status == 'workedit' %}
+        {% include 'crm/worksheet_edit.html' %}
+
+        {% elif status == 'renewaledit' %}
+        {% include 'crm/renewal_edit.html' %}
+
+        {% elif status == 'credentialedit' %}
+        {% include 'crm/credential_edit.html' %}
+
+       
+
+        {% else %}
+
+        {% endif %}
+        
+    </div>
+
+    
+</body>
+</html>

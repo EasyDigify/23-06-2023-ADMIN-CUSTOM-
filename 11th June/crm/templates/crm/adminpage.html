@@ -1,0 +1,270 @@
+
+<style>
+    .label-text{
+        color: black;
+    }
+</style>
+<h1 style="text-align: center; color: black;">WELCOME TO ADMIN PANEL</h1>
+
+<div class="container" style="margin-left: 50px; width: 800px;">
+    <form method="POST" action="{% url 'adminpanel' %}">
+        {% csrf_token %}
+        <br>
+        <span class="label-text" style="margin-left: 300px;">USERNAME</span>
+        <select name="username">
+            {% for users in users %}
+              <option value="{{ users }}">{{ users }}</option>
+            {% endfor %}
+        </select><br><br>
+
+        <div class="row">
+            <div class="col-md-2 mb-3">
+                <span class="label-text">is_all</span><br>
+    <input type="radio" name="is_all" class="radio" value="True">
+    <label for="light" class="radio-label">
+      <span class="label-text">Enable</span>
+    </label><br>
+    <input type="radio" name="is_all" class="radio" value="False" checked>
+    <label for="dark" class="radio-label">
+      <span class="label-text">Disable</span>
+    </label><br>
+    <br>
+
+
+   
+            </div>
+            <div class="col-md-2 mb-3">
+                <span class="label-text">is_form</span><br>
+                <input type="radio" name="is_form" class="radio" value="True">
+                <label for="light" class="radio-label">
+                  <span class="label-text">Enable</span>
+                </label><br>
+                <input type="radio" name="is_form" class="radio" value="False" checked>
+                <label for="dark" class="radio-label">
+                  <span class="label-text">Disable</span>
+                </label><br>
+                <br>
+
+            </div>
+            <div class="col-md-2 mb-3">
+                <span class="label-text">is_report</span><br>
+        <input type="radio" name="is_report" class="radio" value="True">
+        <label for="light" class="radio-label">
+          <span class="label-text">Enable</span>
+        </label><br>
+        <input type="radio" name="is_report" class="radio" value="False" checked>
+        <label for="dark" class="radio-label">
+          <span class="label-text">Disable</span>
+        </label><br>
+        <br>
+            </div>
+
+            <div class="col-md-2 mb-3">
+                <span class="label-text">is_update</span><br>
+                <input type="radio" name="is_update" class="radio" value="True">
+                <label for="light" class="radio-label">
+                  <span class="label-text">Enable</span>
+                </label><br>
+                <input type="radio" name="is_update" class="radio" value="False" checked>
+                <label for="dark" class="radio-label">
+                  <span class="label-text">Disable</span>
+                </label><br>
+                <br>
+        
+            </div>
+
+            <div class="col-md-2 mb-3">
+                <span class="label-text">is_customer_form</span><br>
+    <input type="radio" name="is_customer_form" class="radio" value="True">
+    <label for="light" class="radio-label">
+      <span class="label-text">Enable</span>
+    </label><br>
+    <input type="radio" name="is_customer_form" class="radio" value="False" checked>
+    <label for="dark" class="radio-label">
+      <span class="label-text">Disable</span>
+    </label><br>
+    <br>
+
+            </div>
+
+            <div class="col-md-2 mb-3">
+                <span class="label-text">is_worksheet_form</span><br>
+    <input type="radio" name="is_worksheet_form" class="radio" value="True">
+    <label for="light" class="radio-label">
+      <span class="label-text">Enable</span>
+    </label><br>
+    <input type="radio" name="is_worksheet_form" class="radio" value="False" checked>
+    <label for="dark" class="radio-label">
+      <span class="label-text">Disable</span>
+    </label><br>
+    <br>
+
+            </div>
+        </div>
+
+
+
+
+
+
+        <div class="row">
+            <div class="col-md-2 mb-3">
+                <span class="label-text">is_renewal_form</span><br>
+    <input type="radio" name="is_renewal_form" class="radio" value="True">
+    <label for="light" class="radio-label">
+      <span class="label-text">Enable</span>
+    </label><br>
+    <input type="radio" name="is_renewal_form" class="radio" value="False" checked>
+    <label for="dark" class="radio-label">
+      <span class="label-text">Disable</span>
+    </label><br>
+    <br>
+            </div>
+
+            <div class="col-md-2 mb-3">
+                
+    <span class="label-text">is_credential_form</span><br>
+    <input type="radio" name="is_credential_form" class="radio" value="True">
+    <label for="light" class="radio-label">
+      <span class="label-text">Enable</span>
+    </label><br>
+    <input type="radio" name="is_credential_form" class="radio" value="False" checked>
+    <label for="dark" class="radio-label">
+      <span class="label-text">Disable</span>
+    </label><br>
+    <br>
+            </div>
+
+            <div class="col-md-2 mb-3">
+                
+    <span class="label-text">is_customer_report</span><br>
+    <input type="radio" name="is_customer_report" class="radio" value="True">
+    <label for="light" class="radio-label">
+      <span class="label-text">Enable</span>
+    </label><br>
+    <input type="radio" name="is_customer_report" class="radio" value="False" checked>
+    <label for="dark" class="radio-label">
+      <span class="label-text">Disable</span>
+    </label><br>
+    <br>
+            </div>
+
+            <div class="col-md-2 mb-3">
+                
+
+    <span class="label-text">is_worksheet_report</span><br>
+    <input type="radio" name="is_worksheet_report" class="radio" value="True">
+    <label for="light" class="radio-label">
+      <span class="label-text">Enable</span>
+    </label><br>
+    <input type="radio" name="is_worksheet_report" class="radio" value="False" checked>
+    <label for="dark" class="radio-label">
+      <span class="label-text">Disable</span>
+    </label><br>
+    <br>
+            </div>
+
+            <div class="col-md-2 mb-3">
+                
+
+    <span class="label-text">is_renewal_report</span><br>
+    <input type="radio" name="is_renewal_report" class="radio" value="True">
+    <label for="light" class="radio-label">
+      <span class="label-text">Enable</span>
+    </label><br>
+    <input type="radio" name="is_renewal_report" class="radio" value="False" checked>
+    <label for="dark" class="radio-label">
+      <span class="label-text">Disable</span>
+    </label><br>
+    <br>
+            </div>
+
+            <div class="col-md-2 mb-3">
+                
+
+    <span class="label-text">is_credential_report</span><br>
+    <input type="radio" name="is_credential_report" class="radio" value="True">
+    <label for="light" class="radio-label">
+      <span class="label-text">Enable</span>
+    </label><br>
+    <input type="radio" name="is_credential_report" class="radio" value="False" checked>
+    <label for="dark" class="radio-label">
+      <span class="label-text">Disable</span>
+    </label><br>
+    <br>
+            </div>
+        </div>
+
+
+
+        <div class="row">
+            <div class="col-md-2 mb-3">
+                <span class="label-text">is_customer_update</span><br>
+                <input type="radio" name="is_customer_update" class="radio" value="True">
+                <label for="light" class="radio-label">
+                  <span class="label-text">Enable</span>
+                </label><br>
+                <input type="radio" name="is_customer_update" class="radio" value="False" checked>
+                <label for="dark" class="radio-label">
+                  <span class="label-text">Disable</span>
+                </label><br>
+                <br>
+            </div>
+            <div class="col-md-2 mb-3">
+                <span class="label-text">is_worksheet_update</span><br>
+    <input type="radio" name="is_worksheet_update" class="radio" value="True">
+    <label for="light" class="radio-label">
+      <span class="label-text">Enable</span>
+    </label><br>
+    <input type="radio" name="is_worksheet_update" class="radio" value="False" checked>
+    <label for="dark" class="radio-label">
+      <span class="label-text">Disable</span>
+    </label><br>
+    <br>
+            </div>
+
+            <div class="col-md-2 mb-3">
+                <span class="label-text">is_renewal_update</span><br>
+                <input type="radio" name="is_renewal_update" class="radio" value="True">
+                <label for="light" class="radio-label">
+                  <span class="label-text">Enable</span>
+                </label><br>
+                <input type="radio" name="is_renewal_update" class="radio" value="False" checked>
+                <label for="dark" class="radio-label">
+                  <span class="label-text">Disable</span>
+                </label><br>
+                <br>
+            
+            </div>
+
+            <div class="col-md-2 mb-3">
+                <span class="label-text">is_credential_update</span><br>
+    <input type="radio" name="is_credential_update" class="radio" value="True">
+    <label for="light" class="radio-label">
+      <span class="label-text">Enable</span>
+    </label><br>
+    <input type="radio" name="is_credential_update" class="radio" value="False" checked>
+    <label for="dark" class="radio-label">
+      <span class="label-text">Disable</span>
+    </label><br>
+    <br>
+            </div>
+
+        </div>
+
+
+    <div class="text-center">
+        <input class="btn btn-success" type="submit" value="Update">
+    </div>
+    
+    <br>
+
+
+
+</form>
+
+    
+
+</div>
+
+   

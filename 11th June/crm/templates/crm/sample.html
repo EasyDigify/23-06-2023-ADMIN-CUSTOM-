@@ -1,0 +1,61 @@
+<form method="POST" action="{% url 'updateadmin' %}">
+    <div class="container" style="margin-left: 200px; width: 50%; background-color: aquamarine">
+        <input type="radio" name="is_all" class="radio" value="True" onclick="toggleEnableDisable(this)">
+        <label for="light" class="radio-label">
+            <span class="label-text">is_all</span>
+        </label><br>
+
+        <div id="enableDisableContainer" style="display: none;">
+            <input type="radio" name="enable_disable" id="onRadio" class="radio" value="True" onclick="toggleOnOff(this)">
+            <label for="onRadio" class="radio-label">
+                <span class="label-text">On</span>
+            </label><br>
+            <input type="radio" name="enable_disable" id="offRadio" class="radio" value="False" onclick="toggleOnOff(this)">
+            <label for="offRadio" class="radio-label">
+                <span class="label-text">Off</span>
+            </label><br>
+            <br>
+        </div>
+
+        <span class="label-text">is_form</span><br>
+        <input type="radio" name="is_form" class="radio" value="True">
+        <label for="light" class="radio-label">
+            <span class="label-text">Enable</span>
+        </label><br>
+        <input type="radio" name="is_form" class="radio" value="False">
+        <label for="dark" class="radio-label">
+            <span class="label-text">Disable</span>
+        </label><br>
+        <br>
+
+        <!-- Add radio buttons for other classes here -->
+
+        <input type="submit" value="Update">
+    </div>
+</form>
+
+<script>
+    function toggleEnableDisable(radio) {
+        var enableDisableContainer = document.getElementById("enableDisableContainer");
+        enableDisableContainer.style.display = radio.checked && radio.value === "True" ? "block" : "none";
+
+        // Deselect "On" and "Off" radio buttons when "is_all" is deselected
+        if (!radio.checked) {
+            var enableDisableRadios = enableDisableContainer.querySelectorAll('input[type="radio"]');
+            enableDisableRadios.forEach(function (radio) {
+                radio.checked = false;
+            });
+        }
+    }
+
+    function toggleOnOff(radio) {
+        var onRadio = document.getElementById("onRadio");
+        var offRadio = document.getElementById("offRadio");
+
+        if (radio === onRadio && onRadio.checked) {
+            offRadio.checked = false;
+        } else if (radio === offRadio && offRadio.checked) {
+            onRadio.checked = false;
+        }
+    }
+</script>
